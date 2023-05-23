@@ -1,0 +1,24 @@
+textarea {
+    min-height: 400px;
+}
+
+.headers-container a {
+    text-decoration: none;
+}
+
+.headers-container li{
+    list-style: none;
+    transition: transform 250ms ease-in-out;
+}
+
+.headers-container li:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.email_li a{
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: 10rem;
+}
