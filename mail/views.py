@@ -12,11 +12,11 @@ from .models import User, Email
 
 def index(request):
 
-    # Authenticated users view their inbox
+    
     if request.user.is_authenticated:
         return render(request, "mail/inbox.html")
 
-    # Everyone else is prompted to sign in
+    
     else:
         return HttpResponseRedirect(reverse("login"))
 
@@ -25,11 +25,11 @@ def index(request):
 @login_required
 def compose(request):
 
-    # Composing a new email must be via POST
+    
     if request.method != "POST":
         return JsonResponse({"error": "POST request required."}, status=400)
 
-    # Check recipient emails
+    
     data = json.loads(request.body)
     emails = [email.strip() for email in data.get("recipients").split(",")]
     if emails == [""]:
@@ -37,7 +37,7 @@ def compose(request):
             "error": "At least one recipient required."
         }, status=400)
 
-    # Convert email addresses to users
+    
     recipients = []
     for email in emails:
         try:
@@ -156,7 +156,7 @@ def register(request):
     if request.method == "POST":
         email = request.POST["email"]
 
-        # Ensure password matches confirmation
+        
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
